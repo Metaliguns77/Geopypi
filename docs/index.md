@@ -13,4 +13,7 @@
 
 ## Features
 
--   TODO
+-   Generate Random numbers
+
+## Demos
+![](https://t4.ftcdn.net/jpg/05/72/82/85/240_F_572828530_ofzCYowQVnlOwkcoBJnZqT36klbJzWdn.jpg)
