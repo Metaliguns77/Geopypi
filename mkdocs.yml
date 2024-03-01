@@ -83,7 +83,7 @@ nav:
         - examples/intro.ipynb
         - examples/KH_Shakibul_Islam_lab4.ipynb
     - Labs:
-        -Labs/KH_Shakibul_Islam_lab4.ipynb
+        -labs/KH_Shakibul_Islam_lab4.ipynb
     - API Reference:
           - geopypi module: geopypi.md
           - common module: common.md
