@@ -81,8 +81,11 @@ nav:
     - Report Issues: https://github.com/Metaliguns77/Geopypi/issues
     - Examples:
         - examples/intro.ipynb
+        - examples/KH_Shakibul_Islam_lab4.ipynb
     - API Reference:
           - geopypi module: geopypi.md
           - common module: common.md
-lab:
+Labs:
+    -
+    -Labs/KH_Shakibul_Islam_lab4.ipynb
     
