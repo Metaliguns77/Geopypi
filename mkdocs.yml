@@ -86,8 +86,5 @@ nav:
           - geopypi module: geopypi.md
           - common module: common.md
 Labs:
-    - examples/KH_Shakibul_Islam_lab4.ipynb
-
-    -
     -Labs/KH_Shakibul_Islam_lab4.ipynb
     
