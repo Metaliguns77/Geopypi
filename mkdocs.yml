@@ -83,7 +83,7 @@ nav:
         - examples/intro.ipynb
         - examples/KH_Shakibul_Islam_lab4.ipynb
         - examples/lab5.ipynb
-    - Labs:
+    - labs:
         -labs/KH_Shakibul_Islam_lab4.ipynb
         -labs/lab5.ipynb
     - API Reference:
