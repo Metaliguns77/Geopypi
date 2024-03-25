@@ -50,7 +50,7 @@ plugins:
           execute: false
           allow_errors: false
           ignore: ["conf.py"]
-          execute_ignore: ["examples/KH_Shakibul_Islam_lab4.ipynb"]
+          execute_ignore: ["examples/KH_Shakibul_Islam_lab4.ipynb","examples/lab5 (Kh Shakibul Islam).ipynb" ]
           
 markdown_extensions:
     - admonition
@@ -82,6 +82,7 @@ nav:
     - Examples:
         - examples/intro.ipynb
         - examples/KH_Shakibul_Islam_lab4.ipynb
+        - examples/lab5 (Kh Shakibul Islam).ipynb
     - Labs:
         -labs/KH_Shakibul_Islam_lab4.ipynb
     - API Reference:
