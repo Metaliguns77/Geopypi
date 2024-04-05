@@ -1,15 +1,15 @@
 """Main module."""
 import ipyleaflet
 from ipyleaflet import basemaps
+import ipywidgets as widgets
 
 class Map(ipyleaflet.Map):
-    
+
     def __init__(self, center= [40, -100], zoom =4, **kwargs):
         if "scroll_wheel_zoom" not in kwargs:
             kwargs["scroll_wheel_zoom"] = True
         super().__init__(center=center, zoom=zoom, **kwargs)
         
-    
     def add_tile_layer(self, url, name, **kwargs):
         layer = ipyleaflet.TileLayer(url=url, name=name, **kwargs)
         self.add_layer(layer)
@@ -38,3 +38,9 @@ class Map(ipyleaflet.Map):
         
         self.add_layer(ipyleaflet.GeoJSON(data=data, name=name, **kwargs))
         
+    def add_zoom_slider(self, description = 'Zoom Level:', min=4, max=15, value=10, position='topright'):
+
+        zoom_slider = widgets.IntSlider(description=description, min=min, max=max, value=value)               
+        control = ipyleaflet.WidgetControl(widget=zoom_slider, position=position)
+        self.add(control)
+        widgets.jslink((zoom_slider, 'value'), (self, 'zoom'))
