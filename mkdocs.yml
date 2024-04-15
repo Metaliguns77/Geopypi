@@ -87,9 +87,9 @@ nav:
         - examples/vector.ipynb
         - examples/raster.ipynb
         
-    - Labs:
-        -labs/KH_Shakibul_Islam_lab4.ipynb
-        -labs/KH_Shakibul_Islam_lab5.ipynb
+    - Lab:
+        -lab/KH_Shakibul_Islam_lab4.ipynb
+        -lab/KH_Shakibul_Islam_lab5.ipynb
         
     - API Reference:
           - geopypi module: geopypi.md
