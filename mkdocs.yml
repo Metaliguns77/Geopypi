@@ -86,6 +86,7 @@ nav:
         - examples/KH_Shakibul_Islam_lab6.ipynb
         - examples/vector.ipynb
         - examples/raster.ipynb
+        - examples/ipywegets.ipynb
         
     - Lab:
         -lab/KH_Shakibul_Islam_lab4.ipynb
