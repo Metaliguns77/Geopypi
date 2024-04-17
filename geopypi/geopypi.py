@@ -211,12 +211,123 @@ class Map(ipyleaflet.Map):
         self.add(control)
         widgets.jslink((zoom_slider, "value"), (self, "zoom"))
 
+
     def add_widget(self, widget, position="topright"):
         """Adds a widget to the map.
 
         Args:
             widget (object): The widget to add.
             position (str, optional): The position of the widget. Defaults to "topright".
+
+        Returns:
+            None
         """
         control = ipyleaflet.WidgetControl(widget=widget, position=position)
         self.add(control)
+
+
+    def add_opacity_slider(
+            self, layer_index=-1, description="Opacity:", position="topright"):
+        """Adds an opacity slider for the specified layer.
+
+        Args:
+            layer (object): The layer for which to add the opacity slider.
+            description (str, optional): The description of the opacity slider. Defaults to "Opacity:".
+            position (str, optional): The position of the opacity slider. Defaults to "topright".
+
+        Returns:
+            None
+        """
+        layer = self.layers[layer_index]
+        opacity_slider = widgets.FloatSlider(
+            description=description, min=0, max=1, value=layer.opacity, style={"description_width": "initial"}
+        )
+
+        def update_opacity(change):
+            """
+            Updates the opacity of a layer based on the new value from a slider.
+
+            This function is designed to be used as a callback for an ipywidgets slider. 
+            It takes a dictionary with a "new" key representing the new value of the slider, 
+            and sets the opacity of a global layer variable to this new value.
+
+            Args:
+            change (dict): A dictionary with a "new" key representing the new value of the slider.
+
+            Returns:
+                None
+            """
+            layer.opacity = change["new"]
+            
+        opacity_slider.observe(update_opacity, "value")
+        
+        control = ipyleaflet.WidgetControl(widget=opacity_slider, position=position)
+        self.add(control)
+
+        from ipywidgets import Dropdown, Button, HBox
+
+    def add_basemap_gui(self, position="topright"):
+        """Adds a basemap GUI to the map.
+
+        Args:
+            position (str, optional): The position of the basemap GUI. Defaults to "topright".
+
+        Returns:
+            None
+        """
+        basemap_selector = widgets.Dropdown(
+            options=[
+                "OpenStreetMap",
+                "OpenTopoMap",
+                "Esri.WorldImagery",
+                "CartoDB.DarkMatter",
+                "Esri.NatGeoWorldMap",
+            ],
+            value="OpenStreetMap",
+        )
+
+        close_button = widgets.Button(
+            icon='times', 
+            layout={'width': '35px'}  
+        )
+
+        def on_basemap_change(change):
+            """
+            Handles the event of changing the basemap on the map.
+
+            This function is designed to be used as a callback for an ipywidgets dropdown. 
+            It takes a dictionary with a "new" key representing the new value of the dropdown, 
+            and calls the add_basemap method with this new value.
+
+            Args:
+                change (dict): A dictionary with a "new" key representing the new value of the dropdown.
+
+            Returns:
+                None
+            """
+            
+            self.add_basemap(change['new'])
+
+
+        def on_close_button_clicked(button):
+            """
+            Handles the event of clicking the close button on a control.
+
+            This function is designed to be used as a callback for a button click event. 
+            It takes a button instance as an argument, and calls the remove method 
+            to remove a global control variable from the map.
+
+            Args:
+                button (ipywidgets.Button): The button that was clicked.
+
+            Returns:
+                None
+            """
+            self.remove(control)
+
+        basemap_selector.observe(on_basemap_change, "value")
+        close_button.on_click(on_close_button_clicked)
+
+        widget_box = widgets.HBox([basemap_selector, close_button])
+        control = ipyleaflet.WidgetControl(widget=widget_box, position=position)
+        self.add(control)    
