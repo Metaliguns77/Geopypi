@@ -88,6 +88,7 @@ nav:
         - examples/raster.ipynb
         - examples/ipywegets.ipynb
         - examples/folium.ipynb
+        - examples/codliver.ipynb
 
     - API Reference:
           - geopypi module: geopypi.md
