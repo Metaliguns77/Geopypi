@@ -100,29 +100,68 @@ class Map(ipyleaflet.Map):
         self.add(layer)
 
 
-    def add_shp(self, data, name="shp", **kwargs):
-        """
-        Adds a shapefile to the current map.
+    def add_shp(
+        self,
+        in_shp,
+        layer_name="Untitled",
+        style={},
+        hover_style={},
+        style_callback=None,
+        fill_colors=["black"],
+        info_mode="on_hover",
+        zoom_to_layer=False,
+        encoding="utf-8",
+    ):
+        """Adds a shapefile to the map.
 
         Args:
-            data (str or dict): The path to the shapefile as a string, or a dictionary representing the shapefile.
-            name (str, optional): The name of the layer. Defaults to "shp".
-            **kwargs: Arbitrary keyword arguments.
+            in_shp (str): The input file path or HTTP URL (*.zip) to the shapefile.
+            layer_name (str, optional): The layer name to be used.. Defaults to "Untitled".
+            style (dict, optional): A dictionary specifying the style to be used. Defaults to {}.
+            hover_style (dict, optional): Hover style dictionary. Defaults to {}.
+            style_callback (function, optional): Styling function that is called for each feature, and should return the feature style. This styling function takes the feature as argument. Defaults to None.
+            fill_colors (list, optional): The random colors to use for filling polygons. Defaults to ["black"].
+            info_mode (str, optional): Displays the attributes by either on_hover or on_click. Any value other than "on_hover" or "on_click" will be treated as None. Defaults to "on_hover".
+            zoom_to_layer (bool, optional): Whether to zoom to the layer after adding it to the map. Defaults to False.
+            encoding (str, optional): The encoding of the shapefile. Defaults to "utf-8".
 
         Raises:
-            TypeError: If the data is neither a string nor a dictionary representing a shapefile.
-
-        Returns:
-            None
+            FileNotFoundError: The provided shapefile could not be found.
         """
-        import shapefile
-        import json
 
-        if isinstance(data, str):
-            with shapefile.Reader(data) as shp:
-                data = shp.__geo_interface__
+        import glob
 
-        self.add_geojson(data, name, **kwargs)
+        if in_shp.startswith("http") and in_shp.endswith(".zip"):
+            out_dir = os.path.dirname(temp_file_path(".shp"))
+            if not os.path.exists(out_dir):
+                os.makedirs(out_dir)
+            basename = os.path.basename(in_shp)
+            filename = os.path.join(out_dir, basename)
+            download_file(in_shp, filename)
+            files = list(glob.glob(os.path.join(out_dir, "*.shp")))
+            if len(files) > 0:
+                in_shp = files[0]
+            else:
+                raise FileNotFoundError(
+                    "The downloaded zip file does not contain any shapefile in the root directory."
+                )
+        else:
+            in_shp = os.path.abspath(in_shp)
+            if not os.path.exists(in_shp):
+                raise FileNotFoundError("The provided shapefile could not be found.")
+
+        geojson = shp_to_geojson(in_shp, encoding=encoding)
+        self.add_geojson(
+            geojson,
+            layer_name,
+            style,
+            hover_style,
+            style_callback,
+            fill_colors,
+            info_mode,
+            zoom_to_layer,
+            encoding,
+        )
 
     
 
