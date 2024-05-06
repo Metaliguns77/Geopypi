@@ -89,9 +89,6 @@ nav:
         - examples/ipywegets.ipynb
         - examples/folium.ipynb
         
-    - Lab:
-        -lab/KH_Shakibul_Islam_lab4.ipynb
-        -lab/KH_Shakibul_Islam_lab5.ipynb
         
     - API Reference:
           - geopypi module: geopypi.md
