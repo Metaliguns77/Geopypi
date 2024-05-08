@@ -2,7 +2,7 @@
 
 __author__ = """KH Shakibul Islam"""
 __email__ = "kshakibu@vols.utk.edu"
-__version__ = "0.0.6"
+__version__ = "0.0.7"
 
 
 from .geopypi import Map
