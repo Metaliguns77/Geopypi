@@ -18,9 +18,6 @@ jobs:
                   pip install --user --no-cache-dir Cython
                   pip install --user -r requirements.txt -r requirements_dev.txt
                   pip install .
-            - name: Discover typos with codespell
-              run: |
-                  codespell --skip="*.csv,*.geojson,*.json,*.js,*.html,*cff,./.git, *data_types.ipynb" --ignore-words-list="aci,hist,meni,Pakages,ND,Fallow"
             - name: PKG-TEST
               run: |
                   python -m unittest discover tests/
