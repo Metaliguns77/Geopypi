@@ -11,9 +11,11 @@ Gopypi is a Python package that allows users to analyze and visualize geospatial
 
 ## Usage
 
-` Vector data display: Geopypi is compatible with multiple vector data formats such as Shapefile, GeoJSON, GeoPackage, and any format supported by GeoPandas. It allows for the loading and displaying of vector data on the map, facilitating the visualization and analysis of spatial features.
+
 
 - Displaying raster data: Geopypi allows you to load and display raster data, such as GeoTIFFs, on the map. This feature is useful for visualizing satellite imagery, digital elevation models, and other gridded datasets.
+
+- Vector data display: Geopypi is compatible with multiple vector data formats such as Shapefile, GeoJSON, GeoPackage, and any format supported by GeoPandas. It allows for the loading and displaying of vector data on the map, facilitating the visualization and analysis of spatial features
   
 - Downloading and visualizing data: Geopypi enables the download and visualization of geospatial data, offering detailed world imagery for diverse analytical purposes
   
