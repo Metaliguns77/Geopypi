@@ -1,2 +1,6 @@
-numpy
+folium
 ipyleaflet
+localtileserver
+numpy
+pandas
+plotly

@@ -1,5 +1,6 @@
 site_name: Geopypi
 site_description: This is a python package for batch geoprocessing.
+
 site_author: Metaliguns77
 site_url: https://Metaliguns77.github.io/Geopypi
 repo_url: https://github.com/Metaliguns77/Geopypi
@@ -83,10 +84,13 @@ nav:
         - examples/intro.ipynb
         - examples/KH_Shakibul_Islam_lab4.ipynb
         - examples/KH_Shakibul_Islam_lab5.ipynb
-    - Labs:
-        -labs/KH_Shakibul_Islam_lab4.ipynb
-        -labs/KH_Shakibul_Islam_lab5.ipynb
-        
+        - examples/KH_Shakibul_Islam_lab6.ipynb
+        - examples/vector.ipynb
+        - examples/raster.ipynb
+        - examples/ipywegets.ipynb
+        - examples/folium.ipynb
+        - examples/codliver.ipynb
+
     - API Reference:
           - geopypi module: geopypi.md
           - common module: common.md

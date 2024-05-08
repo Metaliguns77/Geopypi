@@ -9,7 +9,7 @@ twine
 click
 pytest
 pytest-runner
-
+plotly
 ipykernel
 livereload
 nbconvert
