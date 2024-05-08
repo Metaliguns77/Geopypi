@@ -3,3 +3,4 @@ ipyleaflet
 localtileserver
 numpy
 pandas
+plotly
